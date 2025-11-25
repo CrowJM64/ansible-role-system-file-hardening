@@ -33,6 +33,8 @@ galaxy_info:
     - deployment
     - automation
     - hardening
+    - redhat
+    - debian
     - crowjm64
 
 dependencies: []
