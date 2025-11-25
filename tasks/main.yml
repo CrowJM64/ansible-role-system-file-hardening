@@ -1,2 +1,56 @@
 ---
-# tasks file for system-file-hardening
+########## Server Hardening Tasks  ##########
+- name: Secure Boot and Cron directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    mode: '700'
+  loop:
+    - /boot
+    - /etc/cron.monthly
+    - /etc/cron.weekly
+    - /etc/cron.daily
+    - /etc/cron.hourly
+
+- name: Secure Crontab and SSHD Config
+  ansible.builtin.file:
+    path: "{{ item }}"
+    mode: '600'
+  loop:
+    - /etc/crontab
+    - /etc/ssh/sshd_config
+
+- name: Secure Passwd and Group Files
+  ansible.builtin.file:
+    path: "{{ item }}"
+    mode: '644'
+  loop:
+    - /etc/passwd
+    - /etc/group
+
+- name: Secure Shadow Files
+  ansible.builtin.file:
+    path: "{{ item }}"
+    mode: '640'
+  loop:
+    - /etc/shadow
+    - /etc/gshadow
+
+- name: Lock Down /run/shm and /dev/shm
+  ansible.builtin.shell: |
+    echo "tmpfs /run/shm tmpfs defaults,noexec,nosuid 0 0" | sudo tee -a /etc/fstab
+    echo "tmpfs /dev/shm tmpfs defaults,noexec,nosuid,nodev 0 0" | sudo tee -a /etc/fstab
+
+########## AuditD Installation ##########
+- name: AuditD Installation (RedHat)
+  ansible.builtin.yum:
+    name: auditd
+    state: latest
+  when: ansible_os_family == "RedHat"
+  notify: restart audit
+
+- name: AuditD Installation (Debian)
+  ansible.builtin.dnf:
+    name: auditd
+    state: latest
+  when: ansible_os_family == "Debian"
+  notify: restart auditd
