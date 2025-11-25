@@ -4,7 +4,7 @@
 ## Overview
 
 This Ansible role automates hardening of the following system files:
-
+```yaml
 - /boot
 - /etc/cron.monthly
 - /etc/cron.weekly
@@ -18,7 +18,7 @@ This Ansible role automates hardening of the following system files:
 - /etc/gshadow
 - /run/shm
 - /dev/shm
-
+```
 
 ## Supported Platforms and Derivatives
 ```yaml
@@ -48,3 +48,5 @@ Ubuntu - All Versions
 ```bash
 ansible-galaxy install crowjm64.system_file_hardening
 ```
+
+This role was created and is maintained by **[CrowJM64](https://github.com/CrowJM64)**.
