@@ -21,6 +21,7 @@ This Ansible role automates hardening of the following system files:
 ```
 
 ## Supported Platforms and Derivatives
+The files changed should exist on every Redhat and Debian Distro. Below are the explicitly supported Distros.
 ```yaml
 # RedHat
 EL - All Versions
