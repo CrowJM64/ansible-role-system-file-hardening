@@ -1,5 +1,5 @@
 # Ansible Role for System File Hardening
-**Creator:** Josh Murphy
+**Author/Maintainer:** Josh Murphy
 
 ## Overview
 
