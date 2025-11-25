@@ -20,9 +20,18 @@ This Ansible role automates hardening of the following system files:
 - /dev/shm
 
 
-## Supported Platforms
+## Supported Platforms and Derivatives
+```yaml
+# RedHat
+EL - All Versions
+Fedora - All Versions
+Rocky - All Versions
+AlmaLinux - All Versions
 
-
+# Debian
+Debian - All Versions
+Ubuntu - All Versions
+```
 
 ## Example Playbook
 
@@ -38,7 +47,4 @@ This Ansible role automates hardening of the following system files:
 
 ```bash
 ansible-galaxy install crowjm64.system_file_hardening
-
-## Author
-**Josh Murphy**
-Infrastructure Engineer - Learning Every Day
+```
